@@ -19,7 +19,7 @@ jobs:
           node-version: 20.19.4
 
       - name: Install dependencies
-        run: npm Install
+        run: npm install
 
       - name: Run tests
         run: npm run test
