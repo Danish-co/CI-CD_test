@@ -2,8 +2,8 @@ name: Node.js CI
 
 on:
   push:
-      branches:
-        - main  
+    branches:
+      - main
 
 jobs:
   test:
@@ -22,29 +22,29 @@ jobs:
         run: npm install
 
       - name: Run tests
-        run: npm run test
+        run: npm test
 
-      - name: build application
+      - name: Build application
         run: npm run build
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: calculator-build
-          path: /dist
+          path: dist/
 
-    deploy:
-      needs: test
-      runs-on: ubuntu-latest
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
 
-      steps: 
-        - name: Download build artifacts
-          uses: actions/download-artifact@v5
-          with:
-            name: calculator-build
+    steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: calculator-build
 
-        - name: Show build files
-          run: ls -la
+      - name: Show build files
+        run: ls -la
 
-        - name: deploy
-          run: echo "Deploying application..."
+      - name: Deploy
+        run: echo "Deploying application..."
