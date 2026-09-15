@@ -44,7 +44,7 @@ jobs:
             name: calculator-build
 
         - name: Show build files
-            run: ls -la
+          run: ls -la
 
         - name: deploy
-            run: echo "Deploying application..."
+          run: echo "Deploying application..."
