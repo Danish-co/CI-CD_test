@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CI/CD Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="calculator" aria-labelledby="app-title">
+        <header class="calculator__header">
+          <p class="brand">CI/CD Calculator</p>
+          <h1 id="app-title">Do the math</h1>
+          <p class="subtitle">Enter two numbers, pick an operation, see the result.</p>
+        </header>
+
+        <form class="calculator__form" id="calculator-form" novalidate>
+          <div class="fields">
+            <label class="field">
+              <span class="field__label">First number</span>
+              <input
+                id="first-number"
+                name="first"
+                type="number"
+                inputmode="decimal"
+                step="any"
+                placeholder="0"
+                required
+              />
+            </label>
+
+            <label class="field">
+              <span class="field__label">Second number</span>
+              <input
+                id="second-number"
+                name="second"
+                type="number"
+                inputmode="decimal"
+                step="any"
+                placeholder="0"
+                required
+              />
+            </label>
+          </div>
+
+          <div class="operations" role="group" aria-label="Operations">
+            <button type="button" class="op-btn" data-operation="add" aria-label="Add">+</button>
+            <button type="button" class="op-btn" data-operation="subtract" aria-label="Subtract">−</button>
+            <button type="button" class="op-btn" data-operation="multiply" aria-label="Multiply">×</button>
+            <button type="button" class="op-btn" data-operation="divide" aria-label="Divide">÷</button>
+          </div>
+        </form>
+
+        <div class="result" aria-live="polite">
+          <span class="result__label">Result</span>
+          <p class="result__value" id="result">—</p>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
