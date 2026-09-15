@@ -32,3 +32,19 @@ jobs:
         with:
           name: calculator-build
           path: /dist
+
+    deploy:
+      needs: test
+      runs-on: ubuntu-latest
+
+      steps: 
+        - name: Download build artifacts
+          uses: actions/download-artifact@v5
+          with:
+            name: calculator-build
+
+          - name: Show build files
+            run: ls -la
+
+          - name: deploy
+            run: echo "Deploying application..."
