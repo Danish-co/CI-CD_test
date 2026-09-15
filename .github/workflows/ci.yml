@@ -43,8 +43,8 @@ jobs:
           with:
             name: calculator-build
 
-          - name: Show build files
+        - name: Show build files
             run: ls -la
 
-          - name: deploy
+        - name: deploy
             run: echo "Deploying application..."
