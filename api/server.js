@@ -71,8 +71,11 @@ const server = http.createServer((req, res) => {
 
     const result = operation(a, b);
 
-    sendJson(res, 200, { result });
-  } catch (error) {
+    sendJson(res, 200, {
+      result,
+      message: 'Deployed automatically by CI/CD!',
+    });
+    } catch (error) {
     sendJson(res, 400, {
       error: error.message,
     });
