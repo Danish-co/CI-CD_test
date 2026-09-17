@@ -5,7 +5,7 @@ const { add, subtract, multiply, divide } = require('../src/calculator');
 describe('calculator', () => {
   describe('add', () => {
     it('adds two positive numbers', () => {
-      assert.strictEqual(add(2, 3), 6);    });
+      assert.strictEqual(add(2, 3), 5);    });
 
     it('adds negative numbers', () => {
       assert.equal(add(-2, -3), -5);
