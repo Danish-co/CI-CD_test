@@ -28,21 +28,21 @@ jobs:
         run: |
           docker build \
             --build-arg API_BASE_URL=http://localhost:9000 \
-            -t ghcr.io/${{ github.repository_owner }}/ci-cd-test-frontend:${{ github.sha }} \
+            -t ghcr.io/${GITHUB_REPOSITORY_OWNER,,}/ci-cd-test-frontend:${{ github.sha }} \
             .
 
       - name: Push frontend image
         run: |
           docker push \
-            ghcr.io/${{ github.repository_owner }}/ci-cd-test-frontend:${{ github.sha }}
+            ghcr.io/${GITHUB_REPOSITORY_OWNER,,}/ci-cd-test-frontend:${{ github.sha }}
 
       - name: Build API image
         run: |
           docker build \
-            -t ghcr.io/${{ github.repository_owner }}/ci-cd-test-api:${{ github.sha }} \
+            -t ghcr.io/${GITHUB_REPOSITORY_OWNER,,}/ci-cd-test-api:${{ github.sha }} \
             ./api
 
       - name: Push API image
         run: |
           docker push \
-            ghcr.io/${{ github.repository_owner }}/ci-cd-test-api:${{ github.sha }}
+            ghcr.io/${GITHUB_REPOSITORY_OWNER,,}/ci-cd-test-api:${{ github.sha }}
