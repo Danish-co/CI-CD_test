@@ -3,32 +3,6 @@
  * Kept separate from src/calculator.js (CommonJS / Node tests).
  */
 
-function add(a, b) {
-  return a + b;
-}
-
-function subtract(a, b) {
-  return a - b;
-}
-
-function multiply(a, b) {
-  return a * b;
-}
-
-function divide(a, b) {
-  if (b === 0) {
-    throw new Error('Cannot divide by zero');
-  }
-  return a / b;
-}
-
-const operations = {
-  add,
-  subtract,
-  multiply,
-  divide,
-};
-
 const firstInput = document.getElementById('first-number');
 const secondInput = document.getElementById('second-number');
 const resultEl = document.getElementById('result');
@@ -55,7 +29,7 @@ function showResult(text, isError = false) {
   resultEl.classList.add('result__value--pulse');
 }
 
-function calculate(operationName) {
+async function calculate(operationName) {
   const a = parseNumber(firstInput.value);
   const b = parseNumber(secondInput.value);
 
@@ -64,15 +38,18 @@ function calculate(operationName) {
     return;
   }
 
-  const operation = operations[operationName];
-  if (!operation) {
-    showResult('Unknown operation', true);
-    return;
-  }
-
   try {
-    const value = operation(a, b);
-    showResult(formatResult(value));
+    const response = await fetch(
+      `${window.APP_CONFIG.API_BASE_URL}/${operationName}?a=${a}&b=${b}`
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error || 'Something went wrong');
+    }
+
+    showResult(formatResult(data.result));
   } catch (error) {
     showResult(error.message || 'Something went wrong', true);
   }

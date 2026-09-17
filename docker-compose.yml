@@ -1,0 +1,15 @@
+services:
+
+  frontend:
+    build:
+      context: .
+      args:
+        API_BASE_URL: ${API_BASE_URL}
+    ports:
+      - "8000:8000"
+
+  api:
+    build:
+      context: ./api
+    ports:
+      - "9000:9000"
